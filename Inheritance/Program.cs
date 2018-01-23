@@ -71,6 +71,12 @@ namespace Inheritance
             foreach (var leg in legs)
             {
                 leg.Walk(10);
+
+                if (leg is Skirt s)
+                {
+                    s.Material = "jeans";
+                }
+
             }
 
             Console.ReadLine();
