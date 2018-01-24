@@ -56,7 +56,7 @@ namespace Inheritance
                 Length = Length.StreetCorner
             };
 
-            var legs = new List<LegBase>
+            var movers = new List<IMoveable>
             {
                 shorts,
                 skirt,
@@ -66,20 +66,32 @@ namespace Inheritance
                 skirt1
             };
 
-            skirt1.Walk(15);
-
-            foreach (var leg in legs)
+            foreach (var mover in movers)
             {
-                leg.Walk(10);
+                mover.Walk(10);
+                mover.Jump(10);
+                mover.Run(15);
 
-                if (leg is Skirt s)
+                switch (mover)
                 {
-                    s.Material = "jeans";
+                    case Skirt s:
+                        Console.WriteLine($"Its a skirt made of {s.Material}");
+                        break;
+                    case Jeans j:
+                        Console.WriteLine($"its {j.Color} jeans");
+                        j.HowFarIMoved = 2000;
+                        break;
+                    case IMoveable m:
+                        m.Run(10);
+                        break;
                 }
-
+                Console.WriteLine($"The {mover.GetType().Name} moved {mover.HowFarIMoved} units.");
             }
 
             Console.ReadLine();
+
+
+            var myDictionary = new Dictionary<string,string>();
         }
     }
 }

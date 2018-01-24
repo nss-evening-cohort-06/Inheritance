@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pieces\Legs\IMove.cs" />
     <Compile Include="Pieces\Legs\Jeans.cs" />
     <Compile Include="Pieces\Legs\LegBase.cs" />
     <Compile Include="Pieces\Legs\LegSize.cs" />
@@ -53,6 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pieces\Shirts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

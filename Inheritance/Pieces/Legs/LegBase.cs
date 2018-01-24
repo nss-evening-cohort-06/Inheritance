@@ -8,7 +8,9 @@ namespace Inheritance.Pieces.Legs
         public string Color { get; set; }
         public LegSize Size { get; set; }
 
-        public void Walk(int numberOfSteps)
+        public abstract void Jump(int howHigh);
+
+        public virtual void Walk(int numberOfSteps)
         {
             Console.WriteLine($"The {Size} legs wearing a {GetType().Name} took {numberOfSteps} steps");
         }
