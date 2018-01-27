@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Inheritance.Pieces.Heads;
 using Inheritance.Pieces.Legs;
+using Inheritance.Pieces.Torsos;
 
 namespace Inheritance
 {
@@ -8,90 +8,33 @@ namespace Inheritance
     {
         static void Main(string[] args)
         {
-            var shorts = new Shorts
-            {
-                Color = "Tan",
-                Length = Length.School,
-                Size = LegSize.Baby,
-                NumberOfPockets = 6
-            };
-
-            var jeans1 = new Jeans
+            var jeans = new Jeans
             {
                 Color = "Black",
                 Size = LegSize.Adult,
                 NumberOfPockets = 4
             };
 
-            var jeans2 = new Jeans
+            var head = new Emmet
             {
-                Color = "Black",
-                Size = LegSize.Child,
-                NumberOfPockets = 4
+                EyeColor = "Blue",
+                Happy = true,
+                HeadGear = new Hair {Color = "blonde", Length = "long"}
             };
 
-            var jeans3 = new Jeans
+            var body = new DadBod
             {
-                Color = "Black",
-                Size = LegSize.Baby,
-                NumberOfPockets = 4
+                BeerBelly = true,
+                BodyHair = true,
+                NumberOfNipples = 2,
+                Shirt = "purple"
             };
 
-            var skirt = new Skirt
-            {
-                Color = "Rainbow",
-                Size = LegSize.Child,
-                NumberOfPockets = 0,
-                Material = "Strechy",
-                Length = Length.Church
-            };
+            var dadEmmet = new MiniFigure(jeans, head, body, "Emmet");
 
+            dadEmmet.Walk(50);
 
-            var skirt1 = new Skirt
-            {
-                Color = "Sparkly",
-                Size = LegSize.Adult,
-                NumberOfPockets = 0,
-                Material = "Sequins",
-                Length = Length.StreetCorner
-            };
-
-            var movers = new List<IMoveable>
-            {
-                shorts,
-                skirt,
-                jeans1,
-                jeans2,
-                jeans3,
-                skirt1
-            };
-
-            foreach (var mover in movers)
-            {
-                mover.Walk(10);
-                mover.Jump(10);
-                mover.Run(15);
-
-                switch (mover)
-                {
-                    case Skirt s:
-                        Console.WriteLine($"Its a skirt made of {s.Material}");
-                        break;
-                    case Jeans j:
-                        Console.WriteLine($"its {j.Color} jeans");
-                        j.HowFarIMoved = 2000;
-                        break;
-                    case IMoveable m:
-                        m.Run(10);
-                        break;
-                }
-                Console.WriteLine($"The {mover.GetType().Name} moved {mover.HowFarIMoved} units.");
-            }
-
-            Console.ReadLine();
-
-
-            var myDictionary = new Dictionary<string,string>();
+            dadEmmet.SwapTorso();
         }
     }
 }
